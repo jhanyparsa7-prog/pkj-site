@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b16">
+<title>pkj Channel | بازی و سرگرمی</title>
+<style>
+:root{--bg:#080b16;--panel:#11182b;--panel2:#18213a;--cyan:#35e7ff;--pink:#ff3cac;--text:#f5f7ff;--muted:#a9b4d0}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#17224a 0,#080b16 55%);color:var(--text);font-family:Tahoma,Arial,sans-serif;min-height:100vh}
+header{padding:22px 5%;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;border-bottom:1px solid #283253;background:#080b16c9;position:sticky;top:0;backdrop-filter:blur(12px);z-index:5}
+.logo{font-size:26px;font-weight:900;letter-spacing:.5px}.logo span{color:var(--cyan);text-shadow:0 0 18px #35e7ff77}
+nav{display:flex;gap:10px;flex-wrap:wrap}a,button{cursor:pointer}nav a,.btn{color:var(--text);text-decoration:none;border:1px solid #344064;background:#151d34;padding:10px 15px;border-radius:12px;font-weight:bold}
+nav a:hover,.btn:hover{border-color:var(--cyan);box-shadow:0 0 18px #35e7ff22}
+.hero{padding:58px 6% 36px;text-align:center}.badge{display:inline-block;border:1px solid #35e7ff66;color:var(--cyan);border-radius:999px;padding:7px 14px;font-size:13px}
+h1{font-size:clamp(34px,6vw,62px);margin:18px 0 12px;line-height:1.2}.glow{background:linear-gradient(90deg,var(--cyan),#fff,var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:17px;line-height:2;max-width:720px;margin:0 auto 24px}
+.actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}.primary{background:linear-gradient(100deg,#00bcd4,#735bff);border:0}.pink{background:linear-gradient(100deg,#ff3cac,#784bff);border:0}
+main{max-width:1150px;margin:auto;padding:12px 5% 60px}.section-title{display:flex;justify-content:space-between;align-items:end;gap:10px;flex-wrap:wrap;margin:25px 0 18px}.section-title h2{font-size:27px;margin:0}.section-title p{margin:0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:17px}
+.card{background:linear-gradient(150deg,#18213a,#0f1425);border:1px solid #293656;border-radius:20px;padding:20px;box-shadow:0 12px 35px #0002;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#35e7ff88}.icon{height:90px;border-radius:15px;display:grid;place-items:center;font-size:42px;background:linear-gradient(135deg,#203a68,#47255c);margin-bottom:15px}
+.card h3{margin:0 0 8px;font-size:20px}.card p{color:var(--muted);line-height:1.8;font-size:14px;min-height:48px}.card button{width:100%;border:0;border-radius:12px;padding:12px;color:#07101c;background:var(--cyan);font-weight:900;font-size:15px}
+.card button.secondary{background:#263453;color:var(--text);border:1px solid #43547a}
+.notice{margin-top:24px;padding:16px 18px;border-radius:15px;background:#141d31;border:1px solid #2c3a5e;color:var(--muted);line-height:1.9}
+footer{text-align:center;border-top:1px solid #26304d;padding:25px;color:var(--muted);font-size:13px}
+.game-screen{display:none;position:fixed;inset:0;background:#070a13f5;z-index:10;overflow:auto;padding:18px}
+.game-box{max-width:700px;margin:25px auto;background:#11182b;border:1px solid #35466e;border-radius:20px;padding:20px;text-align:center}
+.game-top{display:flex;justify-content:space-between;align-items:center;gap:12px}.game-box h2{margin-top:8px}.game-box p{color:var(--muted);line-height:1.8}
+#gameArea{margin:15px auto;min-height:250px;display:grid;place-items:center}
+canvas{max-width:100%;background:#080d1b;border:1px solid #344467;border-radius:12px;touch-action:manipulation}
+.controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px}
+.controls button{background:#253451;color:white;border:1px solid #40547d;padding:10px 15px;border-radius:10px}
+#ttt{display:grid;grid-template-columns:repeat(3,85px);gap:7px;direction:ltr}#ttt button{height:85px;font-size:32px;border-radius:12px;background:#1c2946;color:white;border:1px solid #40547d}
+#memory{display:grid;grid-template-columns:repeat(4,65px);gap:7px;direction:ltr}#memory button{height:65px;font-size:25px;border-radius:10px;background:#243455;color:white;border:1px solid #40547d}
+@media(max-width:500px){header{position:static}.logo{font-size:22px}.hero{padding-top:40px}#ttt{grid-template-columns:repeat(3,75px)}#ttt button{height:75px}#memory{grid-template-columns:repeat(4,56px)}#memory button{height:56px}}
+
+.comment-item{background:#0b1223;border:1px solid #2b395a;border-radius:12px;padding:13px;text-align:right}
+.comment-item strong{color:var(--cyan)}.comment-item p{margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8}
+</style>
+</head>
+<body>
+<header><div class="logo"><span>pkj</span> Channel</div><nav><a href="#games">بازی‌ها</a><a href="https://www.aparat.com/Pkj1391" target="_blank" rel="noopener">کانال آپارات</a></nav></header>
+<section class="hero"><span class="badge">🎮 دنیای بازی‌های رایگان</span><h1>به <span class="glow">pkj Channel</span> خوش اومدی!</h1><p>اینجا می‌تونی چند بازی ساده و رایگان رو مستقیم توی مرورگر بازی کنی؛ بدون نصب برنامه. بازی‌ها بعد از باز شدن صفحه هم اینترنت نمی‌خوان.</p><div class="actions"><a class="btn primary" href="#games">شروع بازی</a><a class="btn pink" href="https://www.aparat.com/Pkj1391" target="_blank" rel="noopener">رفتن به کانال آپارات ↗</a></div></section>
+<main id="games"><div class="section-title"><h2>🕹️ آرکید pkj</h2><p>رایگان • ساده • مناسب موبایل و رایانه</p></div>
+<div class="grid">
+<article class="card"><div class="icon">🐍</div><h3>مار بازی</h3><p>مار رو حرکت بده و امتیاز جمع کن؛ مراقب برخورد با دیوار باش!</p><button onclick="openGame('snake')">بازی کن</button></article>
+<article class="card"><div class="icon">⭕</div><h3>دوز</h3><p>در برابر دوستت بازی کن و سه علامت رو در یک خط قرار بده.</p><button onclick="openGame('ttt')">بازی کن</button></article>
+<article class="card"><div class="icon">🧠</div><h3>حافظه</h3><p>کارت‌ها رو برگردون و جفت‌های یکسان رو پیدا کن.</p><button onclick="openGame('memory')">بازی کن</button></article>
+<article class="card"><div class="icon">🔢</div><h3>۲۰۴۸</h3><p>عددهای یکسان رو ترکیب کن و به عدد ۲۰۴۸ برس.</p><button onclick="openGame('2048')">بازی کن</button></article>
+<article class="card"><div class="icon">🧱</div><h3>شکستن آجرها</h3><p>با حرکت دادن صفحه، توپ رو نگه دار و آجرها رو بشکن.</p><button onclick="openGame('breakout')">بازی کن</button></article>
+<article class="card"><div class="icon">⚡</div><h3>کلیک سریع</h3><p>در ۱۵ ثانیه تا می‌تونی روی هدف بزن و رکوردت رو ثبت کن.</p><button onclick="openGame('click')">بازی کن</button></article>
+</div>
+<div class="notice"><b>نکته:</b> این سایت یک نمونه‌ی مستقل است و فقط به کانال آپاراتت لینک می‌دهد؛ برای دسترسی مدیریتی به حساب آپارات باید از راه رسمی وارد خود آپارات شوی. بازی‌ها داخل همین صفحه اجرا می‌شوند. برای استفاده‌ی آفلاین، فایل‌ها را یک بار در مرورگر باز کن؛ قابلیت آفلاین کامل روی نسخه‌ی منتشرشده با HTTPS بهتر کار می‌کند.</div>
+
+<section id="comments" style="margin-top:34px">
+  <div class="section-title"><h2>💬 نظرات شما</h2><p>نظرت رو درباره سایت و بازی‌ها بنویس</p></div>
+  <div class="card">
+    <form id="commentForm" style="display:grid;gap:12px">
+      <label for="commentName">اسم یا لقب (اختیاری)</label>
+      <input id="commentName" maxlength="40" placeholder="مثلاً گیمر pkj" style="padding:12px;border-radius:10px;border:1px solid #344064;background:#080d1b;color:#fff;font:inherit">
+      <label for="commentText">نظر تو</label>
+      <textarea id="commentText" required maxlength="500" rows="4" placeholder="نظرت رو اینجا بنویس..." style="padding:12px;border-radius:10px;border:1px solid #344064;background:#080d1b;color:#fff;font:inherit;resize:vertical"></textarea>
+      <button type="submit" style="border:0;border-radius:12px;padding:13px;background:linear-gradient(100deg,#00bcd4,#735bff);font-weight:900;color:#07101c;font-size:15px">ثبت نظر روی این دستگاه</button>
+    </form>
+    <div class="notice" style="margin-top:14px"><b>توجه:</b> در این نسخه، نظرها فقط در همین مرورگر و همین دستگاه ذخیره می‌شوند و برای صاحب سایت یا بازدیدکننده‌های دیگر فرستاده نمی‌شوند. برای اینکه نظرها واقعاً به دست صاحب سایت برسند و همه ببینند، سایت باید آنلاین شود و بخش نظرات به یک سرویس مشترک متصل شود.</div>
+    <div id="commentList" style="display:grid;gap:10px;margin-top:18px"></div>
+  </div>
+</section>
+</main><footer>© pkj Channel — ساخته‌شده برای سرگرمی 🎮</footer>
+<div class="game-screen" id="screen"><div class="game-box"><div class="game-top"><button class="btn" onclick="closeGame()">✕ بستن</button><span class="badge">pkj Arcade</span></div><h2 id="gameTitle">بازی</h2><p id="gameInfo"></p><div id="gameArea"></div><div class="controls" id="gameControls"></div></div></div>
+<script>
+let timer=null, cleanup=null;
+function openGame(name){closeGame();document.getElementById('screen').style.display='block';let area=document.getElementById('gameArea'),info=document.getElementById('gameInfo'),controls=document.getElementById('gameControls');area.innerHTML='';controls.innerHTML='';
+const btn=(txt,fn)=>{let b=document.createElement('button');b.textContent=txt;b.onclick=fn;controls.appendChild(b);return b};
+if(name==='snake'){document.getElementById('gameTitle').textContent='مار بازی';info.textContent='با کلیدهای جهت‌دار یا دکمه‌های پایین حرکت کن.';let c=document.createElement('canvas');c.width=320;c.height=320;area.appendChild(c);let x=c.getContext('2d'),snake=[{x:8,y:8}],dir={x:1,y:0},food={x:14,y:12},score=0,alive=true;function foodNew(){food={x:Math.floor(Math.random()*20),y:Math.floor(Math.random()*20)}}function draw(){x.fillStyle='#080d1b';x.fillRect(0,0,320,320);x.fillStyle='#ff3cac';x.fillRect(food.x*16,food.y*16,14,14);x.fillStyle='#35e7ff';snake.forEach(p=>x.fillRect(p.x*16,p.y*16,14,14));x.fillStyle='white';x.fillText('امتیاز: '+score,8,14)}function tick(){if(!alive)return;let h={x:snake[0].x+dir.x,y:snake[0].y+dir.y};if(h.x<0||h.y<0||h.x>=20||h.y>=20||snake.some(p=>p.x===h.x&&p.y===h.y)){alive=false;info.textContent='بازی تموم شد! امتیاز: '+score;return}snake.unshift(h);if(h.x===food.x&&h.y===food.y){score++;foodNew()}else snake.pop();draw()}function set(d){if(d.x!==-dir.x||d.y!==-dir.y)dir=d}document.onkeydown=e=>{if(e.key==='ArrowUp')set({x:0,y:-1});if(e.key==='ArrowDown')set({x:0,y:1});if(e.key==='ArrowLeft')set({x:-1,y:0});if(e.key==='ArrowRight')set({x:1,y:0})};btn('↑',()=>set({x:0,y:-1}));btn('←',()=>set({x:-1,y:0}));btn('↓',()=>set({x:0,y:1}));btn('→',()=>set({x:1,y:0}));btn('شروع دوباره',()=>openGame('snake'));draw();timer=setInterval(tick,130);cleanup=()=>{document.onkeydown=null}}
+if(name==='ttt'){document.getElementById('gameTitle').textContent='دوز';info.textContent='دو نفره؛ X و O به نوبت بازی می‌کنند.';let board=Array(9).fill(''),turn='X',done=false,g=document.createElement('div');g.id='ttt';area.appendChild(g);function render(){g.innerHTML='';board.forEach((v,i)=>{let b=document.createElement('button');b.textContent=v;b.onclick=()=>{if(v||done)return;board[i]=turn;if([[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]].some(a=>a.every(k=>board[k]===turn))){done=true;info.textContent='برنده: '+turn+'!'}else if(board.every(Boolean)){done=true;info.textContent='مساوی شد!'}else turn=turn==='X'?'O':'X';render()};g.appendChild(b)})}btn('شروع دوباره',()=>openGame('ttt'));render()}
+if(name==='memory'){document.getElementById('gameTitle').textContent='بازی حافظه';info.textContent='دو کارت رو انتخاب کن و جفت‌ها رو پیدا کن.';let symbols=['🚀','🎮','⭐','🍉','🚗','🐱','⚽','🎧','🚀','🎮','⭐','🍉','🚗','🐱','⚽','🎧'].sort(()=>Math.random()-.5),opened=[],matched=new Set(),g=document.createElement('div');g.id='memory';area.appendChild(g);function render(){g.innerHTML='';symbols.forEach((s,i)=>{let b=document.createElement('button');b.textContent=matched.has(i)||opened.includes(i)?s:'?';b.onclick=()=>{if(matched.has(i)||opened.includes(i)||opened.length===2)return;opened.push(i);render();if(opened.length===2){if(symbols[opened[0]]===symbols[opened[1]]){opened.forEach(k=>matched.add(k));opened=[];if(matched.size===16)info.textContent='آفرین! همه جفت‌ها رو پیدا کردی.';render()}else timer=setTimeout(()=>{opened=[];render()},700)}};g.appendChild(b)})}btn('شروع دوباره',()=>openGame('memory'));render()}
+if(name==='2048'){document.getElementById('gameTitle').textContent='۲۰۴۸';info.textContent='با کلیدهای جهت‌دار حرکت بده؛ روی موبایل از دکمه‌ها استفاده کن.';let board=Array(16).fill(0),c=document.createElement('canvas');c.width=320;c.height=320;area.appendChild(c);let ctx=c.getContext('2d');function add(){let z=board.map((v,i)=>v?null:i).filter(v=>v!==null);if(z.length)board[z[Math.floor(Math.random()*z.length)]]=Math.random()<.9?2:4}function draw(){ctx.fillStyle='#0b1020';ctx.fillRect(0,0,320,320);board.forEach((v,i)=>{let xx=(i%4)*80,yy=Math.floor(i/4)*80;ctx.fillStyle=v?'#'+({2:'243c63',4:'285a77',8:'3c4eaa',16:'6b3c9c',32:'b33b82',64:'db4e62',128:'d59c35',256:'d4bb3a',512:'48a878',1024:'36b9a8',2048:'35e7ff'}[v]||'54718d'):'#17213a';ctx.fillRect(xx+3,yy+3,74,74);if(v){ctx.fillStyle='white';ctx.font='bold 24px Arial';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(v,xx+40,yy+40)}})}function move(d){let old=board.join(',');for(let line=0;line<4;line++){let ids=[];for(let k=0;k<4;k++){let r=d==='up'?k:d==='down'?3-k:line,co=d==='left'?k:d==='right'?3-k:line;ids.push(r*4+co)}let vals=ids.map(i=>board[i]).filter(Boolean);for(let k=0;k<vals.length-1;k++)if(vals[k]===vals[k+1]){vals[k]*=2;vals.splice(k+1,1)}while(vals.length<4)vals.push(0);ids.forEach((id,k)=>board[id]=vals[k])}if(old!==board.join(',')){add();draw();if(board.includes(2048))info.textContent='بردی! به ۲۰۴۸ رسیدی.'}}document.onkeydown=e=>{let map={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right'};if(map[e.key]){e.preventDefault();move(map[e.key])}};btn('↑',()=>move('up'));btn('←',()=>move('left'));btn('↓',()=>move('down'));btn('→',()=>move('right'));btn('شروع دوباره',()=>openGame('2048'));add();add();draw();cleanup=()=>{document.onkeydown=null}}
+if(name==='breakout'){document.getElementById('gameTitle').textContent='شکستن آجرها';info.textContent='صفحه رو با لمس یا حرکت ماوس جابه‌جا کن.';let c=document.createElement('canvas');c.width=360;c.height=300;area.appendChild(c);let ctx=c.getContext('2d'),px=145,ball={x:180,y:230,dx:3,dy:-3},bricks=Array.from({length:30},(_,i)=>({x:8+(i%10)*35,y:25+Math.floor(i/10)*22,on:true})),alive=true;function paddle(e){let r=c.getBoundingClientRect();px=(e.clientX-r.left)*c.width/r.width-35}c.addEventListener('mousemove',paddle);c.addEventListener('touchmove',e=>{e.preventDefault();let r=c.getBoundingClientRect();px=(e.touches[0].clientX-r.left)*c.width/r.width-35},{passive:false});function draw(){ctx.fillStyle='#080d1b';ctx.fillRect(0,0,360,300);bricks.forEach(b=>{if(b.on){ctx.fillStyle='#'+['35e7ff','ff3cac','7d70ff'][Math.floor(b.y/22)%3];ctx.fillRect(b.x,b.y,30,14)}});ctx.fillStyle='white';ctx.fillRect(px,275,70,9);ctx.beginPath();ctx.arc(ball.x,ball.y,6,0,Math.PI*2);ctx.fill()}function tick(){if(!alive)return;ball.x+=ball.dx;ball.y+=ball.dy;if(ball.x<6||ball.x>354)ball.dx*=-1;if(ball.y<6)ball.dy*=-1;if(ball.y>267&&ball.x>px&&ball.x<px+70)ball.dy=-Math.abs(ball.dy);bricks.forEach(b=>{if(b.on&&ball.x>b.x&&ball.x<b.x+30&&ball.y>b.y&&ball.y<b.y+14){b.on=false;ball.dy*=-1}});if(ball.y>305){alive=false;info.textContent='توپ افتاد! برای بازی دوباره بزن.'}if(bricks.every(b=>!b.on)){alive=false;info.textContent='همه آجرها رو شکستی!'}draw()}btn('شروع دوباره',()=>openGame('breakout'));draw();timer=setInterval(tick,20);cleanup=()=>{c.removeEventListener('mousemove',paddle)}}
+if(name==='click'){document.getElementById('gameTitle').textContent='کلیک سریع';info.textContent='۱۵ ثانیه وقت داری! روی هدف بزن.';let score=0,left=15;let status=document.createElement('h2');status.textContent='امتیاز: 0 | زمان: 15';area.appendChild(status);let target=btn('هدف رو بزن!',()=>{if(left>0){score++;status.textContent='امتیاز: '+score+' | زمان: '+left;target.style.transform='scale('+(.85+Math.random()*.4)+')';target.style.margin=Math.floor(Math.random()*20)+'px'}});target.style.background='#ff3cac';target.style.fontSize='22px';target.style.padding='22px 35px';let t=setInterval(()=>{left--;status.textContent='امتیاز: '+score+' | زمان: '+left;if(left<=0){clearInterval(t);target.disabled=true;info.textContent='تموم شد! امتیاز نهایی: '+score;btn('دوباره بازی کن',()=>openGame('click'))}},1000);timer=t}
+}
+function closeGame(){if(timer){clearInterval(timer);clearTimeout(timer);timer=null}if(cleanup){cleanup();cleanup=null}document.getElementById('screen').style.display='none';document.getElementById('gameArea').innerHTML='';document.getElementById('gameControls').innerHTML='';document.onkeydown=null}
+document.getElementById('screen').addEventListener('click',e=>{if(e.target.id==='screen')closeGame()});
+</script>
+
+<script>
+(function(){
+ const form=document.getElementById('commentForm');
+ if(!form)return;
+ const key='pkjChannelComments_v1';
+ const name=document.getElementById('commentName');
+ const text=document.getElementById('commentText');
+ const list=document.getElementById('commentList');
+ function read(){try{return JSON.parse(localStorage.getItem(key)||'[]')}catch(e){return []}}
+ function render(){
+   const items=read(); list.innerHTML='';
+   if(!items.length){const p=document.createElement('p');p.textContent='هنوز نظری ثبت نشده؛ اولین نفر باش!';p.style.color='var(--muted)';list.appendChild(p);return}
+   items.slice().reverse().forEach(item=>{
+     const box=document.createElement('div');box.className='comment-item';
+     const who=document.createElement('strong');who.textContent=item.name||'کاربر مهمان';
+     const when=document.createElement('small');when.textContent=' · '+item.date;when.style.color='var(--muted)';
+     const body=document.createElement('p');body.textContent=item.text;
+     box.append(who,when,body);list.appendChild(box);
+   });
+ }
+ form.addEventListener('submit',function(e){
+   e.preventDefault();const value=text.value.trim();if(!value)return;
+   const items=read();items.push({name:name.value.trim().slice(0,40),text:value.slice(0,500),date:new Date().toLocaleDateString('fa-IR')});
+   try{localStorage.setItem(key,JSON.stringify(items));text.value='';render()}
+   catch(err){alert('ذخیره‌سازی در این مرورگر امکان‌پذیر نیست.');}
+ });
+ render();
+})();
+</script>
+
+</body></html>
